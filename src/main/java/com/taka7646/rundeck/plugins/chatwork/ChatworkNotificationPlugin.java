@@ -5,6 +5,7 @@ import com.dtolabs.rundeck.core.plugins.Plugin;
 import com.dtolabs.rundeck.core.plugins.configuration.PropertyScope;
 import com.dtolabs.rundeck.plugins.descriptions.PluginDescription;
 import com.dtolabs.rundeck.plugins.descriptions.PluginProperty;
+import com.dtolabs.rundeck.plugins.descriptions.Password;
 import java.util.*;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -20,12 +21,13 @@ public class ChatworkNotificationPlugin implements NotificationPlugin{
     @PluginProperty(name = "room", title = "ルームID", description = "チャットワーク ルームID", defaultValue = "", scope=PropertyScope.Instance)
     private String room;
     @PluginProperty(name = "apiToken", title = "APIトークン", description = "APIトークン", defaultValue = "", scope=PropertyScope.Instance)
+    @Password
     private String apiToken;
     @PluginProperty(name = "message", title = "送信メッセージ", description = "送信メッセージ", defaultValue = "", scope=PropertyScope.Instance)
     private String message;
 
     public boolean postNotification(String trigger, Map executionData, Map config) {
-        if (this.message == "" || this.message == null) {
+        if ("".equals(this.message) || this.message == null) {
             return true;
         }
         this.send(this.createMessage(executionData, this.message));
