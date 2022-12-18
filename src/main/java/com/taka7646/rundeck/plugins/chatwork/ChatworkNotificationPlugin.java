@@ -49,6 +49,7 @@ public class ChatworkNotificationPlugin implements NotificationPlugin{
         message = message.replace("{URL}", (String)executionData.get("href"));
         message = message.replace("{ID}", executionData.get("id").toString());
         message = message.replace("{USER}", (String)executionData.get("user"));
+        message = message.replace("{NODE}", (String)executionData.get("succeededNodeListString"));
         // JOBオプションを置換
         Map<String,Object> context = (Map<String,Object>)executionData.get("context");
         Map<String,String> option = (Map<String,String>)context.get("option");

@@ -8,4 +8,5 @@ This is a notification plugin.
 * {STATUS} succeeded / failed 
 * {URL} JobのURL
 * {USER} Jobを実行したユーザー
+* {NODE} Jobを実行したNode
 * Jobオプション
